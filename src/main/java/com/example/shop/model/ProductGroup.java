@@ -16,7 +16,7 @@ public class ProductGroup {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private String nameGroup;
+    private String groupTitle;
     @Column
     private String groupDescription;
 
