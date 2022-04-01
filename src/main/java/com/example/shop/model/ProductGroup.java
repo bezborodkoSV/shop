@@ -20,7 +20,7 @@ public class ProductGroup {
     @Column
     private String groupDescription;
 
-    @OneToMany(mappedBy = "productGroup", orphanRemoval = true)
+    @OneToMany(mappedBy = "productGroup",cascade = {CascadeType.REMOVE,CascadeType.MERGE},orphanRemoval = true)
     private List<Product> products = new ArrayList<>();
 
 }

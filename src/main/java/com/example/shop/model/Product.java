@@ -23,8 +23,6 @@ public class Product {
     @NotBlank(message = "Product description can't be empty")
     private String description;
     @Column
-    private String group;
-    @Column
     @NotNull(message = "Product cost can't be empty")
     private float cost;
     @Column

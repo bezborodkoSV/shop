@@ -4,6 +4,8 @@ import com.example.shop.model.Product;
 import com.example.shop.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
@@ -12,7 +14,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public boolean addProduct(Product product) {
+    public boolean createProduct(Product product) {
         productRepository.save(product);
         return true;
     }
@@ -27,7 +29,11 @@ public class ProductService {
     }
 
     public boolean updateProduct(Product product){
-        productRepository.save(product);
+
         return true;
+    }
+
+    public List<Product> getListProduct(){
+        return productRepository.findAll();
     }
 }
