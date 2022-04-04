@@ -5,9 +5,7 @@ import com.example.shop.service.ProductGroupService;
 import com.example.shop.service.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ProductController {
@@ -31,8 +29,19 @@ public class ProductController {
     public String newProduct(Model model) {
         model.addAttribute("newProduct", new Product());
         model.addAttribute("allGroups", productGroupService.getAllGroup());
-        return "addProduct";
+        return "seller/addProduct";
     }
+
+//    must rewrite, id can't be show
+    @GetMapping("/productPage")
+    public String productPage(@RequestParam("productTittle" ) String productTittle,@RequestParam("idProduct") long idProduct, Model model){
+        System.out.println("Product tittle: "+productTittle);
+        System.out.println("Product id: "+idProduct);
+        model.addAttribute("product",productService.getProductById(idProduct));
+        return "productPage";
+    }
+
+
 
 
     @PostMapping("/addProduct")
@@ -40,5 +49,6 @@ public class ProductController {
         productService.createProduct(product);
         return "home";
     }
+
 
 }

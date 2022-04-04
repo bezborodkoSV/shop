@@ -28,6 +28,10 @@ public class ProductService {
         }
     }
 
+    public Product getProductById(long id){
+        return productRepository.findById(id);
+    }
+
     public boolean updateProduct(Product product){
 
         return true;

@@ -7,6 +7,9 @@
 </head>
 <body>
 <h1>Hi</h1>
+
+<a href="/administration">administration</a>
+
 <form:select path="allGroups">
     <form:option value="${null}">Select group</form:option>
     <form:options items="${allGroups}" itemLabel="groupTitle" itemValue="id"></form:options>
@@ -16,12 +19,24 @@
     <th>Product</th>
     <th>Description</th>
     </thead>
-<c:forEach items="${listProducts}" var="product">
-    <tr>
-        <td>${product.productTitle}</td>
-        <td>${product.description}</td>
-    </tr>
-</c:forEach>
+    <c:forEach items="${listProducts}" var="product">
+        <tr>
+            <td>
+<%--                <a href="productPage/${product.productTitle}">${product.productTitle}--%>
+                    <form action="/productPage"
+<%--                    /${productTittle}" --%>
+                          method="post">
+                        <input type="hidden" name="idProduct" value="${product.id}">
+                        <input type="hidden"  name="productTittle" value="${product.productTitle}">
+                        <button type="submit" value="${product.productTitle}">${product.productTitle}</button>
+<%--                        <a href="productPage/${product.productTitle}" >${product.productTitle}</a>--%>
+                    </form>
+<%--                </a>--%>
+            </td>
+
+            <td>${product.description}</td>
+        </tr>
+    </c:forEach>
 </table>
 </body>
 </html>
